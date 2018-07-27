@@ -1,0 +1,242 @@
+@import "_variables";
+
+/* color scheme sections */
+
+@mixin scheme-primary {
+  background-color: $color-monochrome-1;
+  color: $color-monochrome-4;
+  &__title {
+    color: $color-monochrome-5;
+  }
+  &__description {
+    color: $color-monochrome-4;
+  }
+}
+
+@mixin scheme-secondary {
+  background-color: $color-monochrome-2;
+  color: $color-monochrome-4;
+  &__title {
+    color: $color-monochrome-5;
+  }
+  &__description {
+    color: $color-monochrome-4;
+  }
+}
+
+@mixin scheme-accent {
+  background-color: $color-secondary;
+  color: $color-tertriary;
+  &__title {
+    color: $color-monochrome-1;
+  }
+  &__description {
+    color: $color-tertriary;
+  }
+}
+
+@mixin scheme-accent--dark {
+  background-color: $color-primary;
+  color: $color-tertriary;
+  &__title {
+    color: $color-monochrome-1;
+  }
+  &__description {
+    color: $color-tertriary;
+  }
+}
+
+@mixin apply-scheme($scheme) {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @if $scheme == "primary" {
+    @include scheme-primary();
+  } @else if $scheme == "secondary" {
+    @include scheme-secondary();
+  } @else if $scheme == "accent" {
+    @include scheme-accent();
+  } @else if $scheme == "accent-dark" {
+    @include scheme-accent--dark();
+  } @else {
+    @include scheme-primary();
+  }
+}
+
+/* media queries */
+@mixin mobile-max {
+  @media #{$xs} {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media #{$gt-xs} {
+    @content;
+  }
+}
+
+@mixin tablet-max {
+  @media #{$sm} {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media #{$gt-sm} {
+    @content;
+  }
+}
+
+@mixin desktop-max {
+  @media #{$md} {
+    @content;
+  }
+}
+
+@mixin desktop-large {
+  @media #{$gt-md} {
+    @content;
+  }
+}
+
+@mixin desktop-large-max {
+  @media #{$lg} {
+    @content;
+  }
+}
+
+@mixin desktop-xlarge {
+  @media #{$gt-lg} {
+    @content;
+  }
+}
+
+@mixin retina-screen {
+  @media
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (   min--moz-device-pixel-ratio: 2),
+    only screen and (     -o-min-device-pixel-ratio: 2/1),
+    only screen and (        min-device-pixel-ratio: 2),
+    only screen and (                min-resolution: 192dpi),
+    only screen and (                min-resolution: 2dppx) {
+        @content;
+    }
+}
+
+/* grid */
+@mixin container {
+  width: 100%;
+  max-width: $container-xs;
+  margin: auto;
+  display: flex;
+  padding: 0 $padding;
+
+  @include tablet {
+    max-width: $container-sm;
+  }
+  @include desktop {
+    max-width: $container-md;
+  }
+  @include desktop-large {
+    max-width: $container-lg;
+  }
+  @include desktop-xlarge {
+    max-width: $container-xlg;
+  }
+}
+
+@mixin row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin grid($numberOfColumns) {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: $numberOfColumns;
+  grid-column-gap: $padding / 2;
+  grid-row-gap: $padding / 2;
+}
+
+/* font-size */
+@mixin paragraph {
+  font-size: $paragraph-size--mobile;
+  line-height: 1.65;
+  font-weight: $font-weight-book;
+  @include tablet {
+    font-size: $paragraph-size;
+  }
+}
+
+@mixin heading-primary {
+  font-size: $heading-primary-size--mobile;
+  line-height: 1.5;
+  font-weight: $font-weight-black;
+  @include tablet {
+    font-size: $heading-primary-size;
+  }
+}
+
+@mixin heading-secondary {
+  font-size: $heading-secondary-size--mobile;
+  line-height: 1.5;
+  font-weight: $font-weight-black;
+  @include tablet {
+    font-size: $heading-secondary-size;
+  }
+}
+
+@mixin heading-tertriary {
+  font-size: $heading-tertriary-size--mobile;
+  line-height: 1.5;
+  font-weight: $font-weight-bold;
+  @include tablet {
+    font-size: $heading-tertriary-size;
+  }
+}
+
+@mixin rounded-section {
+  height: 80px;
+  position: relative;
+
+  @include tablet {
+    height: 120px;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 115%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-top-left-radius: 100%;
+    border-top-right-radius: 100%;
+    background-color: $color-monochrome-1;
+    @include desktop {
+      bottom: -25vh;
+      width: 150%;
+      border-top-left-radius: 100%;
+      border-top-right-radius: 100%;
+    }
+    @include desktop-large {
+      width: 115%;
+    };
+    @include mobile-max {
+      width: 115%;
+    }
+  }
+}
+
+@mixin rounded-section--inverted {
+  @include rounded-section;
+  &:before {
+    transform: translate(-50%, 0) scaleY(-1);
+    @include desktop {
+      bottom: 0;
+      top: -25vh;
+    }
+  }
+}
