@@ -1,4 +1,4 @@
-@import "_mixins";
+@import "mixins";
 
 html {
   display: flex;
@@ -20,25 +20,32 @@ body {
 }
 
 input {
+  -webkit-appearance: none;
+  box-shadow: none;
   font-family: $font-primary;
   font-weight: $font-weight-book;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include heading-tertriary;
   color: $header-color-primary;
-  @include heading-tertriary();
 }
 
 h1 {
-  @include heading-primary();
+  @include heading-primary;
 }
 
 h2 {
-  @include heading-secondary();
+  @include heading-secondary;
 }
 
 p {
-  @include paragraph();
+  @include paragraph;
 }
 
 button {
@@ -48,12 +55,8 @@ button {
 
 select {
   font-family: $font-primary;
+
   &::-ms-expand {
     display: none;
   }
-}
-
-input {
-  -webkit-appearance: none;
-  box-shadow: none;
 }
