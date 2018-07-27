@@ -1,7 +1,6 @@
 # Workshop 1
 
-Static templating with html5/(s)css and vanilla js
-
+Static templating with html5/(s)css and vanilla js.
 
 ## Getting Started
 
@@ -9,15 +8,18 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+You will need node & npm
+
+To install:
 
 ```
-Give examples
+sudo /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)
+sudo brew install node
 ```
 
 ### Installing
 
-Follow the instructions to install and start
+Follow the instructions to install dependencies and start
 
 Install the dependencies:
 
@@ -25,7 +27,7 @@ Install the dependencies:
 npm install
 ```
 
-To start development and the webpack server:
+To start development and the Webpack server:
 
 ```
 npm start
