@@ -148,12 +148,20 @@
   flex-direction: row;
 }
 
-@mixin grid($number-of-columns) {
-  display: grid;
-  grid-column-gap: $padding / 2;
-  grid-row-gap: $padding / 2;
-  grid-template-columns: $number-of-columns;
-  grid-template-rows: auto;
+/* grid */
+
+// How to use:
+// gridtype: "columns" || "rows"
+// args: "1fr 1fr 2fr" || repeat(3, auto)
+// row-gap: "15px"
+// column-gap: "15px"
+
+@mixin grid($grid-type, $args, $row-gap: $padding, $column-gap: $row-gap) {
+  @supports (display: grid) {
+    display: grid;
+    grid-gap: $row-gap $column-gap;
+    grid-template-#{$grid-type}: #{$args};
+  }
 }
 
 /* font-size */

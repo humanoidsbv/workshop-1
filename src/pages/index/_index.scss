@@ -1,0 +1,15 @@
+@import '../../shared/styles/mixins';
+
+.container {
+  background-color: red;
+  @include tablet {
+    background-color: green;
+  }
+  @include desktop {
+    background-color: blue;
+  }
+}
+
+.row {
+  @include grid("columns", "1fr 2fr 1fr");
+}
