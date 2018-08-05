@@ -16,5 +16,8 @@ https://tympanus.net/codrops/css_reference/
 - https://alialaa.github.io/css-grid-cheat-sheet/
 - https://css-tricks.com/snippets/css/complete-guide-grid/
 
+### BEM
+- http://getbem.com/naming/
+
 ### Browser support
 https://caniuse.com/
