@@ -5,7 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run validate-bem",
+    "validate-bem": "bem-validate ./src/pages/index/index.html ./src/pages/about/about.html",
     "build": "webpack"
   },
   "keywords": [],
@@ -13,6 +14,7 @@
   "license": "ISC",
   "devDependencies": {
     "babel-eslint": "^8.2.6",
+    "bem-validate": "^1.1.2",
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^0.28.7",
