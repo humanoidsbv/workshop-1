@@ -12,6 +12,7 @@ module.exports = {
     './src/js/index.js',
     './src/shared/styles/main.scss'
   ],
+  mode: 'development',
   output: {
     filename: 'app.js',
     path: path.resolve(__dirname, './dist')
