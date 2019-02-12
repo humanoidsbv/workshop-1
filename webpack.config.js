@@ -4,6 +4,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
+// own custom plugin :-)
+const HtmlValidatePlugin = require('html-validate-plugin');
 
 module.exports = {
   entry: [
@@ -55,6 +57,10 @@ module.exports = {
     }),
     new WriteFilePlugin({
       test: /^(?!.*(hot)).*/
+    }),
+    new HtmlValidatePlugin({
+      from: 'src/**/*',
+      validator: 'http://html5.validator.nu'
     })
   ]
 };
